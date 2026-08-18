@@ -1,30 +1,45 @@
 # iPlex Cinemas – Cinema Booking System
 
-This is my second university project, developed using **Java** and **JavaFX**. It builds on what I learned in my first project (an Inventory Management System) with a more advanced application: a full cinema ticket booking platform featuring detailed customer booking flows, an expanded admin toolset and a dedicated super admin role.
+This is my second university project, developed using **Java** and **JavaFX**. It builds on what I learned in my first project (an Inventory Management System) with a more advanced application: a full cinema ticket booking platform featuring detailed customer booking flows, an expanded admin toolset, and a dedicated super admin role.
 
-![iPlex Cinemas Login Screen](screenshot.png)
+![Login Screen](screenshots/screenshot1.png)
 
 ## Overview
 
-iPlex Cinemas is a simulated multi-branch cinema booking platform. Customers can log in, browse movies playing at different branches, pick a showtime, select seats on an interactive seat map and confirm a booking with full ticket details. Admins get a full back-office dashboard to manage movies, showtimes and customer bookings — including the ability to book on a customer's behalf and manually lock/unlock seats — while a super admin role sits on top to manage the admin team itself.
+iPlex Cinemas is a simulated multi-branch cinema booking platform. Customers can log in, browse movies playing at different branches, pick a showtime, select seats on an interactive seat map, and confirm a booking with full ticket details. Admins get a full back-office dashboard to manage movies, showtimes, and customer bookings — including the ability to book on a customer's behalf and manually lock/unlock seats — while a super admin role sits on top to manage the admin team itself.
 
 ## Features
 
 ### Customer Features
 - Create a new account or log in with existing credentials
 - Browse cinema branches
+
+  ![Cinema Branch Selection](screenshots/screenshot2.png)
+
 - View movies currently showing at a selected branch, with available showtimes
 - Interactive seat map with Regular and Premium seat types
 - Multi-seat selection with live price calculation
+
+  ![Show and Seat Selection](screenshots/screenshot3.png)
+
 - Booking confirmation with mock payment processing
 
 ### Admin Features
-- **Movie Management** – add and remove movies from the catalog
-- **Show Management** – add, edit and remove showtimes per branch and screen
+- **Movie Management** – add and remove movies from the catalog, organized by category
+
+  ![Admin: Add Movie / Category](screenshots/screenshot4.png)
+
+- **Show Management** – add, edit, and remove showtimes per branch and screen
+
+  ![Admin: Show Editing / Adding / Cancelling](screenshots/screenshot5.png)
+
 - **Booking Management**
   - Cancel a customer's booking (auto-refunds seats)
   - Edit the seats attached to an existing booking
   - Create a new booking directly on behalf of a customer (auto-registers them if they don't have an account yet)
+
+  ![Admin: Updating / Cancelling Bookings](screenshots/screenshot6.png)
+
 - **Visual Seat Lock Tool** – manually lock or unlock specific seats across any screen (e.g. for maintenance or reserved holds)
 
 ### Super Admin Features
@@ -34,13 +49,13 @@ iPlex Cinemas is a simulated multi-branch cinema booking platform. Customers can
 
 | Entity | Description |
 |---|---|
-| **User** | Abstract base class; extended by `Customer`, `Admin` and `SuperAdmin` |
+| **User** | Abstract base class; extended by `Customer`, `Admin`, and `SuperAdmin` |
 | **CinemaBranch** | A physical cinema location containing multiple screens |
 | **Screen** | A screening room with a grid of seats (Regular/Premium rows) |
-| **Movie** | Title, category (Action, Comedy, Drama, Horror, Sci-Fi) and duration |
+| **Movie** | Title, category (Action, Comedy, Drama, Horror, Sci-Fi), and duration |
 | **Show** | A scheduled screening of a movie on a specific screen and time, with an optional 3D flag |
 | **Seat** | Individual seat with a type (Regular/Premium) and status (Available/Booked/Locked) |
-| **Booking** | Links a user, a show and a set of seats; tracks status and total price |
+| **Booking** | Links a user, a show, and a set of seats; tracks status and total price |
 | **PaymentRecord** | Handles payment processing and refunds for a booking |
 
 ## Project Structure
@@ -49,10 +64,16 @@ iPlex Cinemas is a simulated multi-branch cinema booking platform. Customers can
 Cinema_Booking_System/
 │
 ├── src/
-│   ├── CinemaBookingSystem.java 
-│   └── CinemaApp.java             
+│   ├── CinemaBookingSystem.java   # Core backend: entities, enums, managers, sample data
+│   └── CinemaApp.java             # JavaFX front-end: all UI screens and navigation
 │
-├── screenshot.png                 
+├── screenshots/                   # App screenshots used in this README
+│   ├── screenshot1.png            # Login screen
+│   ├── screenshot2.png            # Cinema branch selection
+│   ├── screenshot3.png            # Show and seat selection
+│   ├── screenshot4.png            # Admin: add movie / category
+│   ├── screenshot5.png            # Admin: show editing / adding / cancelling
+│   └── screenshot6.png            # Admin: updating / cancelling bookings
 │
 ├── .gitignore
 │
@@ -106,11 +127,11 @@ This is my second university software development project, following on from my 
 
 - A three-tier role system (Customer, Admin, Super Admin) instead of a single-user application
 - Detailed, multi-step customer ticket booking (branch → movie → showtime → seat selection → payment)
-- A full admin back-office with dedicated tools for managing movies, showtimes and customer bookings
+- A full admin back-office with dedicated tools for managing movies, showtimes, and customer bookings
 - Admin-specific overrides, such as booking on behalf of a customer and manually locking/unlocking seats
 - A super admin layer for registering and managing admin accounts
 
-Building this project gave me a deeper understanding of object-oriented design, role-based access control and structuring a larger JavaFX application with multiple interconnected screens and state.
+Building this project gave me a deeper understanding of object-oriented design, role-based access control, and structuring a larger JavaFX application with multiple interconnected screens and state.
 
 ## Future Improvements
 
